@@ -1,13 +1,8 @@
 import numpy as np
 import pandas as pd
 
-<<<<<<< HEAD
-file = open("C:\\Users\Jimenez Medina\\Desktop\Archivos Backup\\bingo_eventosai\\cartonescomas.csv")
-numline = len(file.readlines())
-print (numline)
-=======
 
-df = pd.read_csv('cartonescomas2.csv')
+df = pd.read_csv("C:\\Users\\Jimenez Medina\\Desktop\\Archivos Backup\\bingo_eventosai\\cartonescomas2.csv")
 # print(df.head())
 print(len(df))
 print(len(df.columns))
@@ -21,4 +16,3 @@ print(b[b['n1b1'] > 15])
 # file = open("cartonescomas.csv")
 # numline = len(file.readlines())
 # print (numline)
->>>>>>> refs/remotes/origin/main
