@@ -2,7 +2,8 @@ import numpy as np
 import pandas as pd
 
 
-df = pd.read_csv('cartonescomas2.csv')
+df = pd.read_csv('CARTONES_PREDETERMINADOS_1-301681.csv', sep=';')
+# df = pd.read_csv('cartonescomas2.csv')
 
 
 def verificarIntervalos(data):
@@ -14,8 +15,8 @@ def verificarIntervalos(data):
             'n1b4',
             'n1b5',
         ],
-            'low':14,
-            'high':16},
+            'low':1,
+            'high':15},
         {'col': [
             'n1i1',
             'n1i2',
@@ -23,17 +24,16 @@ def verificarIntervalos(data):
             'n1i4',
             'n1i5',
         ],
-            'low':29,
-            'high':31},
+            'low':16,
+            'high':30},
         {'col': [
             'n1n1',
             'n1n2',
-            'n1n3',
             'n1n4',
             'n1n5',
         ],
-            'low':30,
-            'high':46},
+            'low':31,
+            'high':45},
         {'col': [
             'n1g1',
             'n1g2',
@@ -41,8 +41,8 @@ def verificarIntervalos(data):
             'n1g4',
             'n1g5',
         ],
-            'low':45,
-            'high':61},
+            'low':46,
+            'high':60},
         {'col': [
             'n1o1',
             'n1o2',
@@ -50,8 +50,8 @@ def verificarIntervalos(data):
             'n1o4',
             'n1o5',
         ],
-            'low':60,
-            'high':76},
+            'low':61,
+            'high':75},
 
     ],
         'letra': ['b', 'i', 'n', 'g', 'o']
@@ -66,9 +66,17 @@ def verificarIntervalos(data):
             base = nombre['info'+letra]
             temp = base[(base[j] < i['low']) | (base[j] > i['high'])]
             print(temp)
+            # appendJson(temp.to_json())
 
 
 def main():
     verificarIntervalos(df)
 
+def appendJson(json):
+    print()
+    # data = json.load(json) 
+    
+
+
 main()
+
