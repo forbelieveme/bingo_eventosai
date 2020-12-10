@@ -1,9 +1,11 @@
+
+import timeit
+code_to_test = """
 import numpy as np
 import pandas as pd
 
 
-
-df = pd.read_csv('C:\\Users\\Jimenez Medina\\Desktop\\Archivos Backup\\bingo_eventosai\\300000.csv', sep=';')
+df = pd.read_csv('CARTONES_PREDETERMINADOS_1-301681.csv', sep=';')
 # df = pd.read_csv('cartonescomas2.csv')
 
 
@@ -77,3 +79,11 @@ def appendJson(json):
     print()
     # data = json.load(json) 
     
+
+
+main()
+
+
+"""
+elapsed_time = timeit.timeit(code_to_test, number=10)/100
+print(elapsed_time)
