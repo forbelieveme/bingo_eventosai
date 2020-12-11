@@ -18,7 +18,9 @@ def main ():
 
         print ("Número de files: ",rows, " Número de columnas: ", cols)
         
+        #j recorre las columnas
         j = 0
+        #i recorre las filas
         i = 0
         
         elementos = []
@@ -112,7 +114,24 @@ def main ():
 #             if valor == temps :
 #                 print ('hay valores repetidos')
 
-main()
+def repeated ():
+    with open('C:\\Users\\Jimenez Medina\\Desktop\\Archivos Backup\\bingo_eventosai\\cartonescomas.csv', 'r') as f:
+        data = f.read()
+        #print (str(data))    
+        #print (str(type(data)))    
+        arreglo = data.split("\n")
+        #
+        rows = len(arreglo)
+        #
+        cols = len(arreglo[0].split(";"))    
+
+        print ("Número de files: ",rows, " Número de columnas: ", cols)
+
+
+
+#main()
+repeated()
+
 print("--- %s seconds ---" % (time.time() - start_time))
 
         
