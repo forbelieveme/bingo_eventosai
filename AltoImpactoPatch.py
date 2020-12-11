@@ -101,53 +101,18 @@ def main (ruta):
             print (elemento)
 
 
-#Método que verifica si hay cartones repetidos en el archivo de cartones
+#Aquí se formatea la información del archivo de cartones de bingo, y posteriormente se
+#verifica se hay cartones repetidos, se utiliza el formatod de cartones y la ruta del archivo.
 def repeated (ruta):
-    with open(ruta, 'r') as f:
-        data = f.read()
-        #print (str(data))    
-        #print (str(type(data)))    
-        arreglo = data.split("\n")
-        #
-        rows = len(arreglo)
-        #
-        cols = len(arreglo[0].split(";"))    
-
-        print ("Número de files: ",rows, " Número de columnas: ", cols)
-
-        
-
-#Compara dos arreglos, si son iguales retorna 1, si son distintos retorna 0.
-def arr_compar (arr1, arr2):    
-    
-    if len(arr1) == len(arr2) :
-        print("misma longitud")
-        contador = 0
-        for elementos in arr1 :      
-            if arr1[contador] == arr2[contador] :                
-                igual = 1
-
-            else :
-                igual = 0
-
-            if igual == 0 :
-                #tan pronto como encuentre que un elemento es desigual, retorna 0
-                print ("arreglos distintos")
-                return 0                
-
-            contador = contador + 1
-        print ("arreglos iguales")
-        return igual
-    else :
-        print ("distinta longitud")
-        return 0
-
+    deal_array(ruta)
+      
 #Se encarga de tomar el formato de cartones de bingo y formatearlo con
 #el propósito de que queden unicamente los valores de las columnas.
-def deal_array():
+#Este método es llamado en el método repeated
+def deal_array(ruta):
     arr_format = []
     #lee el archivo
-    f = open('C:\\Users\\Jimenez Medina\\Desktop\\Archivos Backup\\bingo_eventosai\\300000.csv', 'r')
+    f = open(ruta, 'r')
     data = f.read()
     
     #Convierte cada carton en una posición de un arreglo.
@@ -165,15 +130,15 @@ def deal_array():
         test = elemento.split(";")        
 
         #Eliminación de campos innecesarios para comparar
-        test.pop(0)
-        test.pop(0)
-        test.pop(0)
-        test.pop(0)
-        test.pop(0)
-        test.pop(0)
-        test.pop(12)
-                
-        arr_format.append(test)
+        if (len(test) > 1) : 
+            test.pop(0)
+            test.pop(0)
+            test.pop(0)
+            test.pop(0)
+            test.pop(0)
+            test.pop(0)
+            test.pop(12)                    
+            arr_format.append(test)
 
 
     ##Número de filas y columnas del arreglo formateado para comparación
@@ -212,9 +177,59 @@ def repeat (arr):
     print ("Total de iteraciones: "+str(it))
 
 
+#Metodo que formatea el archivo con el propósito de analizarlo.
+def getFormat(ruta):
+    arr_format = []
+    #lee el archivo
+    f = open(ruta, 'r')
+    data = f.read()
+    
+    #Convierte cada carton en una posición de un arreglo.
+    arreglo = data.split("\n")        
+    
+    #bandera
+    #print (type(arreglo))    
+
+    #bandera
+    #print (len(arreglo))
+
+    #metodo para formatear un
+    for elemento in arreglo :                
+        #Separación de valores por comas
+        test = elemento.split(";")        
+
+        #Eliminación de campos innecesarios para comparar
+        if (len(test) > 1) : 
+            test.pop(0)
+            test.pop(0)
+            test.pop(0)
+            test.pop(0)
+            test.pop(0)
+            test.pop(0)
+            test.pop(12)
+            arr_format.append(test)
+
+    return arr_format
+
+#Corrección de valores fuera de rango.
+#entra un arreglo y el arreglo de archivos sale corregido.
+
+def fix_out_range(numero_carton, ruta):
+    #se obtiene el arreglo a través del formateo de la ruta
+    arreglo = getFormat(ruta)
+    
+
+
+
+
+
+
+
+
+
 #Definición de la ruta
 ruta = 'C:\\Users\\Jimenez Medina\\Desktop\\Archivos Backup\\bingo_eventosai\\cartonescomas.csv'
-main()
+main(ruta)
 
 
 print("--- %s seconds ---" % (time.time() - start_time))
