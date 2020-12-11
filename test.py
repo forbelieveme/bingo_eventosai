@@ -1,25 +1,24 @@
-# lista = []
-# def v_repetidos (nuevo, valor):            
-#     if nuevo == 1 :
-#         lista = []
-#         print("nueva verificación")
-#     if nuevo == 0 :
-#         ver (valor)
-#         print("Lista existente")
+#lista = []
+def v_repetidos (nuevo, valor):            
+    if nuevo == 1 :
+        lista = []
+        print("nueva verificación")
+    if nuevo == 0 :
+        ver (valor)
+        print("Lista existente")
             
 
-# def ver (valor) :
-#     print (lista)    
-#     if len(lista) == 0 :
-#         lista.append(valor)
-#     else :
-#         for value in lista :
-#             if value == valor :
-#                 print ('hay valores repetidos con ', value)
-#             else :
-#                 lista.append(value)        
+def ver (valor) :
+    print (lista)    
+    if len(lista) == 0 :
+        lista.append(valor)
+    else :
+        for value in lista :
+            if value == valor :
+                print ('hay valores repetidos con ', value)
+            else :
+                lista.append(value)        
 
-#arr1, arr2, longitud
 
 
 #Compara dos arreglos, si son iguales retorna 1, si son distintos retorna 0.
@@ -48,13 +47,89 @@ def arr_compar (arr1, arr2):
         return 0
 
 
-print (str(arr_compar([3,4,5,6], [3,4,5])))
-
-            
-# v_repetidos(1, "hola")
-# v_repetidos(0, "hol")
-# v_repetidos(0, "ho")
-# v_repetidos(0, "h")
-# v_repetidos(0, "h")
+#print (str(arr_compar([3,4,5,6], [3,4,5])))
 
 
+def deal_array():
+    arr_format = []
+    #lee el archivo
+    f = open('C:\\Users\\Jimenez Medina\\Desktop\\Archivos Backup\\bingo_eventosai\\300000.csv', 'r')
+    data = f.read()
+    
+    #Convierte cada carton en una posición de un arreglo.
+    arreglo = data.split("\n")        
+    
+    #bandera
+    print (type(arreglo))    
+
+    #bandera
+    print (len(arreglo))
+
+    #metodo para formatear un
+    for elemento in arreglo :
+                
+        test = elemento.split(";")        
+
+        #Eliminación de campos innecesarios para comparar
+        test.pop(0)
+        test.pop(0)
+        test.pop(0)
+        test.pop(0)
+        test.pop(0)
+        test.pop(0)
+        test.pop(12)
+                
+        arr_format.append(test)
+
+
+    ##Número de filas y columnas del arreglo formateado para comparación
+    filas = len(arr_format)
+    columnas = len(arr_format[0])
+    
+    print ("numero de filas: "+str(filas)+ " y número de columnas: "+str(columnas))
+
+    # for el in arr_format:
+    #     print (el)
+
+    repeat(arr_format)
+
+        
+    
+#Método óptimo para hallar cartones repetidos en un arreglo
+def repeat (arr):
+    n = len(arr)
+    repetidos = []
+    it = 0
+    j = 0
+    while (j < n):
+        print ("checking bingo card number: "+str(j))
+        i = j
+        while (i < n) :
+            it += 1
+            if arr [j] == arr[i] and j != i:                
+                repetidos.append("Cartón repetido en :"+str(j)+", y :"+str(i)+".")
+            i = i + 1        
+        j = j + 1
+        
+
+    print ("Hay "+str(len(repetidos))+" cartones repetidos.")
+
+    for elementos in repetidos :
+        print (elementos)
+    print ("Total de iteraciones: "+str(it))
+    
+
+                
+
+
+
+
+
+def max() :
+    i = 2
+    j = 2
+    print (j != i )
+
+
+deal_array()
+#max()
