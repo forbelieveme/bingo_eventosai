@@ -214,9 +214,22 @@ def getFormat(ruta):
 #Corrección de valores fuera de rango.
 #entra un arreglo y el arreglo de archivos sale corregido.
 
-def fix_out_range(numero_carton, ruta):
-    #se obtiene el arreglo a través del formateo de la ruta
-    arreglo = getFormat(ruta)
+# def fix_out_range(numero_carton, ruta):
+#     #se obtiene el arreglo a través del formateo de la ruta
+#     arreglo = getFormat(ruta)
+    
+
+def compararcarton (carton, ruta):
+
+    cartones = getFormat(ruta)
+    # for elemento in formateado :
+    #     print (elemento)
+    
+    for elemento in cartones :
+        if carton == elemento :
+            print ("Hay un carton igual en "+str(cartones.index(elemento)))
+            break
+    
     
 
 
@@ -225,11 +238,16 @@ def fix_out_range(numero_carton, ruta):
 
 
 
-
-
 #Definición de la ruta
-ruta = 'C:\\Users\\Jimenez Medina\\Desktop\\Archivos Backup\\bingo_eventosai\\cartonescomas.csv'
+ruta = 'C:\\Users\\Jimenez Medina\\Desktop\\Archivos Backup\\bingo_eventosai\\300000.csv'
 main(ruta)
+
+# test = ['5', '15', '10', '6', '13', '29', '20', '17', '29', '21', '44', '39', '32', '41', '60', '58', '53', '48', '56', '66', '72', '68', '74', '63']
+# c3503 = ['5','15','10','6','13','29','20','21','16','19','45','36','32','40','49','54','51','55','56','75','72','66','68','62']
+# c9997 = ['15','9','7','5','10','19','22','24','25','20','37','36','41','42','57','49','58','53','48','67','66','72','73','75']
+# c9999 = ['9','14','4','8','3','28','21','16','26','22','40','42','36','43','55','46','54','52','51','73','68','74','67','69']
+
+#compararcarton (c9999, ruta)
 
 
 print("--- %s seconds ---" % (time.time() - start_time))
